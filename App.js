@@ -1,13 +1,43 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {Component} from 'react';
+import { Text, View, StyleSheet, Container } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from '@expo/vector-icons';
+import { StatusBar } from 'react-native';
+import { registerRootComponent } from 'expo';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import Home from './Screens/Home';
+import Pops from './Screens/Pops';
+import History from './Screens/History';
+import MainScreen from './Navigation/MainScreen';
+
+
+
+
+    
+  
+
+
+
+
+
 
 export default function App() {
+
+  
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    
+  
+
+<NavigationContainer>
+  {/* <ContactsStackScreen/> */}
+      
+<MainScreen />
+    </NavigationContainer>
+    
+    
+    
   );
 }
 
