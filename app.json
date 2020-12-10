@@ -17,16 +17,22 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "IOSName"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+        "backgroundColor": "#FFFFFF",
+        "package": "StockNotify"
+      },
+      "package": "My.App"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     }
+  },
+  "android": {
+    "package": "StockNotify"
   }
 }
