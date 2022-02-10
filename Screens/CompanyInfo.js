@@ -15,7 +15,7 @@ export default function CompanyInfo({ route, navigation }) {
     const [visable, setVisable] = useState(true);
 
     useEffect(() => {
-        const url = 'http://192.168.1.107:4545/info/' + route.params.id;
+        const url = 'http://192.168.1.111:4545/info/' + route.params.id;
         axios.get(url).
             then(res => {
 

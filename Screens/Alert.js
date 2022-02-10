@@ -23,6 +23,7 @@ export default function Alert({ route, navigation }) {
     const [company, setCompany] = React.useState([]);
     const [visable, setVisable] = React.useState(true);
     const [industry, setIndustry] = React.useState([]);
+    const [type, setType] = React.useState([]);
     const [search, setSearch] = React.useState('');
     const [displayData, setDisplayData] = React.useState([]);
     const [selectedItem, setItem] = React.useState([]);
@@ -51,7 +52,8 @@ export default function Alert({ route, navigation }) {
 
 
         //console.log(asyncData)
-        navigation.goBack()
+        navigation.goBack('Pops');
+
     }
 
     const readData = async () => {
@@ -88,7 +90,7 @@ export default function Alert({ route, navigation }) {
     useEffect(() => {
 
         readData();
-        axios.get('http://192.168.1.107:4545/company').
+        axios.get('http://192.168.1.111:4545/company').
             then(res => {
 
                 setCompany(res.data)
@@ -254,7 +256,31 @@ export default function Alert({ route, navigation }) {
                         "name": "Inne dobra konsumpcyjne",
                     },
                 ])
+                setType([
+                    {
+                        "id": "1",
+                        "name": "Raporty",
+                        "type": 'raport'
+                    },
+                    {
+                        "id": "2",
+                        "name": "NZWA",
+                        "type": 'nza'
+                    },
+                    {
+                        "id": "3",
+                        "name": "Dywidendy",
+                        "type": 'dywidenda'
+                    },
+                    {
+                        "id": "4",
+                        "name": "Szacunkowe wyniki",
+                        "type": 'wyniki'
+                    }
+                ])
                 setVisable(false);
+                
+                    
             }).catch(err => console.warn('Błąd połączenia z serwerem'));
 
 
@@ -353,10 +379,10 @@ export default function Alert({ route, navigation }) {
 
                 <View>
                     <RNPicker
-                        dataSource={value === 'first' ? company : industry}
-                        dummyDataSource={value === 'first' ? company : industry}
+                        dataSource={value === 'first' ? company : (value === 'second' ? industry : (type))}
+                        dummyDataSource={value === 'first' ? company : (value === 'second' ? industry : (type))}
                         defaultValue={false}
-                        pickerTitle={value === 'first' ? 'Wybierz spólkę' : 'Wybierz branżę'}
+                        pickerTitle={value === 'first' ? 'Wybierz spólkę' : (value === 'second' ? 'Wybierz branżę' : ('Wybierz typ komunikatu'))}
                         showSearchBar={true}
                         disablePicker={false}
                         changeAnimation={"none"}
@@ -367,7 +393,7 @@ export default function Alert({ route, navigation }) {
                         itemSeparatorStyle={styles.itemSeparatorStyle}
                         pickerItemTextStyle={styles.listTextViewStyle}
                         selectedLabel={search}
-                        placeHolderLabel={value === 'first' ? 'Wybierz spólkę' : 'Wybierz branżę'}
+                        placeHolderLabel={value === 'first' ? 'Wybierz spólkę' : (value === 'second' ? 'Wybierz branżę' : ('Wybierz typ komunikatu'))}
                         selectLabelTextStyle={styles.selectLabelTextStyle}
                         placeHolderTextStyle={styles.placeHolderTextStyle}
                         dropDownImageStyle={styles.dropDownImageStyle}
@@ -382,12 +408,12 @@ export default function Alert({ route, navigation }) {
                     title='DODAJ ALERT'
                     onPress={() => saveData(asyncData, selectedItem)}
                 />
-                <Button
+                {/* <Button
                     buttonStyle={{ borderRadius: 10, marginLeft: 'auto', marginRight: 'auto', marginTop: 15, color: '#1DA1F2', width: '75%' }}
 
                     title='DODAJ'
                     onPress={() => clearStorage()}
-                />
+                /> */}
             </SafeAreaView>
         )
     }

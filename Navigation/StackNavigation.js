@@ -48,6 +48,7 @@ const PopsStackNavigator = () => {
     <Stack.Navigator screenOptions={screenOptionStyle}>
       <Stack.Screen name="Pops" component={Pops} />
       <Stack.Screen name="Alert" component={Alert} />
+      <Stack.Screen name="StockDetails" component={StockDetails} />
     </Stack.Navigator>
   );
 }

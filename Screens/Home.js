@@ -31,7 +31,7 @@ class Home extends Component {
     }
 
     fetchData = () => {
-        axios.get('http://192.168.1.107:4545/users').
+        axios.get('http://192.168.1.111:4545/users').
             then(res => {
 
                 this.setState({ data: res.data, visable: false });

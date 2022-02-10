@@ -38,7 +38,7 @@ class History extends Component {
 
   fetchData = () => {
     this.setState({ loading: true });
-    axios.get('http://192.168.1.107:4545/company').
+    axios.get('http://192.168.1.111:4545/company').
       then(res => {
 
         this.setState({ data: res.data });
@@ -87,7 +87,7 @@ class History extends Component {
   }
 
   dataToList = (id) => {
-      const url = 'http://192.168.1.107:4545/info/' + id;
+      const url = 'http://192.168.1.111:4545/info/' + id;
       axios.get(url).
         then(res => {
   

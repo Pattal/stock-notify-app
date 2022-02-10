@@ -9,6 +9,7 @@ import Constants from 'expo-constants';
 
 
 export default function StockDetails({route, navigation}) {
+  
     return (
         <SafeAreaView style={styles.container}>
     <Card>
